@@ -29,11 +29,13 @@ export const useUIStore = create<UIStore>()(
           const newTheme = state.theme === 'light' ? 'dark' : 'light';
           // Update document class for Tailwind dark mode
           document.documentElement.classList.toggle('dark', newTheme === 'dark');
+          document.body.classList.toggle('dark', newTheme === 'dark');
           return { theme: newTheme };
         }),
 
       setTheme: (theme) => {
         document.documentElement.classList.toggle('dark', theme === 'dark');
+        document.body.classList.toggle('dark', theme === 'dark');
         set({ theme });
       },
 

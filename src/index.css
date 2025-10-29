@@ -25,20 +25,36 @@ body {
   font-family: 'Inter', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+html {
+  background-color: white;
+}
+
+html.dark {
+  background-color: rgb(2 6 23);
+}
+
+body {
   background-color: white;
   color: rgb(15 23 42);
-  overflow-x: hidden;
+}
+
+body.dark {
+  background-color: rgb(2 6 23);
+  color: rgb(248 250 252);
 }
 
 #root {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: white;
 }
 
-body.dark {
+html.dark #root {
   background-color: rgb(2 6 23);
-  color: rgb(248 250 252);
 }
 
 h1,

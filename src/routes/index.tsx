@@ -3,8 +3,8 @@ import { PrivateRoute } from './PrivateRoute';
 import { RoleRoute } from './RoleRoute';
 import { Login, Register, ForgotPassword } from '../pages/auth';
 import { StudentDashboard, Classes, CheckIn, Attendance, Settings as StudentSettings } from '../pages/student';
-import { LecturerDashboard, Reports } from '../pages/lecturer';
-import { AdminDashboard, CampusManagement, UserManagement, Settings } from '../pages/admin';
+import { LecturerDashboard, ClassManagement, RequestManagement, Reports } from '../pages/lecturer';
+import { AdminDashboard, Analytics, CampusManagement, UserManagement, Settings } from '../pages/admin';
 
 const NotFoundPage = () => <div>404 - Page Not Found</div>;
 
@@ -96,6 +96,26 @@ const router = createBrowserRouter([
     ),
   },
   {
+    path: '/lecturer/classes',
+    element: (
+      <PrivateRoute>
+        <RoleRoute allowedRoles={['lecturer']}>
+          <ClassManagement />
+        </RoleRoute>
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: '/lecturer/requests',
+    element: (
+      <PrivateRoute>
+        <RoleRoute allowedRoles={['lecturer']}>
+          <RequestManagement />
+        </RoleRoute>
+      </PrivateRoute>
+    ),
+  },
+  {
     path: '/lecturer/reports',
     element: (
       <PrivateRoute>
@@ -121,6 +141,16 @@ const router = createBrowserRouter([
       <PrivateRoute>
         <RoleRoute allowedRoles={['admin']}>
           <AdminDashboard />
+        </RoleRoute>
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: '/admin/analytics',
+    element: (
+      <PrivateRoute>
+        <RoleRoute allowedRoles={['admin']}>
+          <Analytics />
         </RoleRoute>
       </PrivateRoute>
     ),
@@ -162,7 +192,11 @@ const router = createBrowserRouter([
 ]);
 
 export const AppRoutes = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <div className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100">
+      <RouterProvider router={router} />
+    </div>
+  );
 };
 
 export default router;

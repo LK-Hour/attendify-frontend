@@ -10,6 +10,28 @@
     <title>Attendify - Attendance Management</title>
   </head>
   <body class="h-full">
+    <script>
+      // Initialize theme before React loads to prevent flash
+      (function() {
+        try {
+          const storage = localStorage.getItem('ui-storage');
+          const theme = storage ? JSON.parse(storage).state?.theme : null;
+          const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          const finalTheme = theme || systemTheme;
+          
+          if (finalTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+            document.body.classList.add('dark');
+          }
+        } catch (e) {
+          // Fallback to system preference
+          if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+            document.body.classList.add('dark');
+          }
+        }
+      })();
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

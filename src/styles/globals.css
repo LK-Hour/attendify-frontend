@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Base Styles */
+  :root {
+    /* Light Theme Colors */
+    --color-primary-50: 239 246 255;
+    --color-primary-100: 219 234 254;
+    --color-primary-200: 191 219 254;
+    --color-primary-300: 147 197 253;
+    --color-primary-400: 96 165 250;
+    --color-primary-500: 59 130 246;
+    --color-primary-600: 37 99 235;
+    --color-primary-700: 29 78 216;
+    --color-primary-800: 30 64 175;
+    --color-primary-900: 30 58 138;
+    --color-primary-950: 23 37 84;
+  }
+
+  /* Dark Mode Colors */
+  .dark {
+    --color-bg-primary: 15 23 42;    /* slate-900 */
+    --color-bg-secondary: 30 41 59;   /* slate-800 */
+    --color-bg-tertiary: 51 65 85;    /* slate-700 */
+    
+    --color-text-primary: 241 245 249;     /* slate-100 */
+    --color-text-secondary: 203 213 225;   /* slate-300 */
+    --color-text-tertiary: 148 163 184;    /* slate-400 */
+    
+    --color-border-primary: 71 85 105;     /* slate-600 */
+    --color-border-secondary: 51 65 85;    /* slate-700 */
+  }
+}
+
+@layer components {
+  /* Ensure dark mode covers the entire page */
+  .dark body {
+    @apply bg-slate-900;
+    @apply text-slate-100;
+  }
+
+  /* Card styles */
+  .card {
+    @apply bg-white dark:bg-slate-800 rounded-lg shadow-sm;
+    @apply border border-gray-200 dark:border-slate-700;
+  }
+
+  /* Form elements */
+  input, select, textarea {
+    @apply bg-white dark:bg-slate-800;
+    @apply border-gray-300 dark:border-slate-600;
+    @apply text-gray-900 dark:text-white;
+    @apply focus:ring-primary-500 focus:border-primary-500 dark:focus:ring-primary-400 dark:focus:border-primary-400;
+  }
+
+  /* Button styles */
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 text-white;
+    @apply dark:bg-primary-500 dark:hover:bg-primary-600;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-100 hover:bg-gray-200 text-gray-700;
+    @apply dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-gray-300;
+  }
+}
+
+/* Ensure full height layout */
+#root {
+  @apply min-h-screen;
+}
+
+/* Smooth transitions for theme switching */
+* {
+  @apply transition-colors duration-200;
+}

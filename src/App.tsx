@@ -9,16 +9,33 @@ function App() {
 
   // Initialize theme on mount
   useEffect(() => {
-    // Check system preference if no theme is set
-    if (!theme) {
+    // Get saved theme or check system preference
+    const savedTheme = localStorage.getItem('ui-storage');
+    const parsedSavedTheme = savedTheme ? JSON.parse(savedTheme)?.state?.theme : null;
+    
+    if (parsedSavedTheme) {
+      setTheme(parsedSavedTheme);
+    } else if (!theme) {
       const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
         ? 'dark'
         : 'light';
       setTheme(systemTheme);
     } else {
+      // Make sure the theme is applied to the document
       setTheme(theme);
     }
-  }, [theme, setTheme]);
+
+    // Listen for system theme changes
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleChange = (e: MediaQueryListEvent) => {
+      if (!parsedSavedTheme) {
+        setTheme(e.matches ? 'dark' : 'light');
+      }
+    };
+
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
 
   return <AppRoutes />;
 }

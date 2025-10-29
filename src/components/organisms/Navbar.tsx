@@ -31,11 +31,14 @@ export const Navbar = () => {
       case 'lecturer':
         return [
           { name: 'Dashboard', path: '/lecturer/dashboard' },
+          { name: 'Classes', path: '/lecturer/classes' },
+          { name: 'Requests', path: '/lecturer/requests' },
           { name: 'Reports', path: '/lecturer/reports' },
         ];
       case 'admin':
         return [
           { name: 'Dashboard', path: '/admin/dashboard' },
+          { name: 'Analytics', path: '/admin/analytics' },
           { name: 'Users', path: '/admin/users' },
           { name: 'Campuses', path: '/admin/campuses' },
           { name: 'Settings', path: '/admin/settings' },
