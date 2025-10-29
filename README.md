@@ -1,4 +1,3 @@
-````markdown
 <div align="center">
 
 # 🎯 Attendify Frontend
@@ -1188,6 +1187,8 @@ This project is part of an academic capstone project at **Cambodia Academy of Di
 <img src="https://forthebadge.com/images/badges/made-with-typescript.svg" alt="Made with TypeScript" />
 
 **⭐ Star this repo if you found it helpful!**
+
+</div>
 
 </div>
 ````
