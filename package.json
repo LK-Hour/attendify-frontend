@@ -23,11 +23,11 @@
     "msw": "^2.11.5",
     "postcss": "^8.5.6",
     "qrcode.react": "^4.2.0",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "react-i18next": "^16.1.0",
-    "react-is": "^19.2.0",
-    "react-router-dom": "^7.9.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-i18next": "^13.5.0",
+    "react-is": "^18.2.0",
+    "react-router-dom": "^6.20.0",
     "recharts": "^3.3.0",
     "socket.io-client": "^4.8.1",
     "tailwindcss": "^3.4.18",
@@ -62,5 +62,10 @@
   },
   "overrides": {
     "vite": "npm:rolldown-vite@7.1.14"
-  }
+  },
+  "description": "Modern, secure attendance management system built with React 18, TypeScript, and Vite. Features face verification, QR code scanning, geofencing, and device fingerprinting for comprehensive attendance tracking.",
+  "main": "eslint.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
