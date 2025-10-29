@@ -1116,16 +1116,16 @@ ci: update deployment workflow
 <tr>
 <td align="center">
 <img src="https://github.com/LK-Hour.png" width="100px;" alt="LK-Hour"/><br/>
-<sub><b>LK-Hour</b></sub><br/>
-<sub>🚀 Lead Developer</sub><br/>
+<sub><b>Attendify</b></sub><br/>
+<sub>🚀 Developer Team</sub><br/>
 <a href="https://github.com/LK-Hour">GitHub</a> •
-<a href="mailto:lk.hour@example.com">Email</a>
+<a href="mailto:l.kimhour.609@gmail.com">Email</a>
 </td>
 <td align="center">
 <img src="https://via.placeholder.com/100x100/4F46E5/FFFFFF?text=👨‍🏫" width="100px;" alt="Advisor"/><br/>
 <sub><b>Project Advisor</b></sub><br/>
-<sub>🎓 Academic Supervisor</sub><br/>
-<a href="#">CADT Faculty</a>
+<sub>🎓 Mat Nab</sub><br/>
+<a href="#">Software Engineering Faculty</a>
 </td>
 <td align="center">
 <img src="https://via.placeholder.com/100x100/10B981/FFFFFF?text=🤝" width="100px;" alt="Contributors"/><br/>
@@ -1136,7 +1136,7 @@ ci: update deployment workflow
 </tr>
 </table>
 
-### **🏫 Academic Institution**
+### **🏫 Cambodia Academy of Digital Cambodia**
 
 <img src="https://via.placeholder.com/200x60/FF6B6B/FFFFFF?text=CADT+Logo" alt="CADT Logo" />
 
@@ -1165,8 +1165,7 @@ _Capstone Project 2025_
 | ----------------------- | ----------------------------------------------------------------------------------------------------- | ------------- |
 | 🐛 **Bug Reports**      | [GitHub Issues](https://github.com/LK-Hour/attendify-frontend/issues/new?template=bug_report.md)      | 24-48 hours   |
 | 💡 **Feature Requests** | [GitHub Issues](https://github.com/LK-Hour/attendify-frontend/issues/new?template=feature_request.md) | 1-2 weeks     |
-| ❓ **Questions**        | [GitHub Discussions](https://github.com/LK-Hour/attendify-frontend/discussions)                       | 24 hours      |
-| 💬 **Chat**             | [Discord Server](https://discord.gg/attendify)                                                        | Real-time     |
+| ❓ **Questions**        | [GitHub Discussions](https://github.com/LK-Hour/attendify-frontend/discussions)                       |
 
 ---
 
@@ -1182,7 +1181,7 @@ This project is part of an academic capstone project at **Cambodia Academy of Di
 
 <br/>
 
-### **Built with ❤️ and ☕ by the CADT Team**
+### **Built with ☕ by the Attendify Team**
 
 <img src="https://forthebadge.com/images/badges/built-with-love.svg" alt="Built with Love" />
 <img src="https://forthebadge.com/images/badges/powered-by-coffee.svg" alt="Powered by Coffee" />
