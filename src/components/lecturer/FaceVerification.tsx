@@ -32,24 +32,24 @@ export const FaceVerification: React.FC<FaceVerificationProps> = ({
 
         // Load the model
         const model = await blazeface.load();
-        
+
         // Start face detection
         const detectFace = async () => {
           if (!videoRef.current || !isMounted) return;
 
           const predictions = await model.estimateFaces(videoRef.current, false);
-            
+
           if (predictions.length > 0) {
             // Get the confidence score
-            const confidence = (predictions[0] as any).probability?.[0] || 0;
-              
+            const confidence = (predictions[0] as { probability?: number[] }).probability?.[0] || 0;
+
             // Check if the confidence meets our threshold
             if (isMounted) {
               onVerification(confidence >= threshold, confidence);
             }
 
             // Check for liveness (simplified version)
-            const isLive = await checkLiveness(predictions[0]);
+            const isLive = await checkLiveness();
             if (!isLive && isMounted) {
               setError('Please show natural movement');
               return;
@@ -79,17 +79,17 @@ export const FaceVerification: React.FC<FaceVerificationProps> = ({
     };
 
     setupCamera();
-    
+
     return () => {
       isMounted = false;
       if (stream) {
-        stream.getTracks().forEach(track => track.stop());
+        stream.getTracks().forEach((track) => track.stop());
       }
     };
   }, [onVerification, threshold]);
 
   // Simple liveness detection check
-  const checkLiveness = async (face: blazeface.NormalizedFace): Promise<boolean> => {
+  const checkLiveness = async (): Promise<boolean> => {
     // In a real implementation, you would:
     // 1. Track face landmarks over multiple frames
     // 2. Detect blink patterns
@@ -99,12 +99,12 @@ export const FaceVerification: React.FC<FaceVerificationProps> = ({
   };
 
   return (
-    <div className="relative rounded-lg overflow-hidden">
+    <div className="relative overflow-hidden rounded-lg">
       {isLoading && (
         <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="text-white">
             <svg
-              className="animate-spin h-8 w-8 text-white"
+              className="h-8 w-8 animate-spin text-white"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -127,22 +127,16 @@ export const FaceVerification: React.FC<FaceVerificationProps> = ({
           </div>
         </div>
       )}
-      
+
       {error && (
-        <div className="absolute top-0 left-0 right-0 bg-red-500 text-white text-center py-2 text-sm">
+        <div className="absolute left-0 right-0 top-0 bg-red-500 py-2 text-center text-sm text-white">
           {error}
         </div>
       )}
-      
-      <video
-        ref={videoRef}
-        autoPlay
-        playsInline
-        muted
-        className="w-full h-[300px] object-cover"
-      />
 
-      <div className="absolute bottom-0 left-0 right-0 p-2 bg-black bg-opacity-50 text-white text-xs text-center">
+      <video ref={videoRef} autoPlay playsInline muted className="h-[300px] w-full object-cover" />
+
+      <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 p-2 text-center text-xs text-white">
         Please look at the camera and move naturally
       </div>
     </div>

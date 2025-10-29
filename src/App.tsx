@@ -12,7 +12,7 @@ function App() {
     // Get saved theme or check system preference
     const savedTheme = localStorage.getItem('ui-storage');
     const parsedSavedTheme = savedTheme ? JSON.parse(savedTheme)?.state?.theme : null;
-    
+
     if (parsedSavedTheme) {
       setTheme(parsedSavedTheme);
     } else if (!theme) {
@@ -35,7 +35,7 @@ function App() {
 
     mediaQuery.addEventListener('change', handleChange);
     return () => mediaQuery.removeEventListener('change', handleChange);
-  }, []);
+  }, [setTheme, theme]);
 
   return <AppRoutes />;
 }
