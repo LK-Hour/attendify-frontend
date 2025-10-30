@@ -1164,7 +1164,8 @@ _Capstone Project 2025_
 | ----------------------- | ----------------------------------------------------------------------------------------------------- | ------------- |
 | 🐛 **Bug Reports**      | [GitHub Issues](https://github.com/LK-Hour/attendify-frontend/issues/new?template=bug_report.md)      | 24-48 hours   |
 | 💡 **Feature Requests** | [GitHub Issues](https://github.com/LK-Hour/attendify-frontend/issues/new?template=feature_request.md) | 1-2 weeks     |
-| ❓ **Questions**        | [GitHub Discussions](https://github.com/LK-Hour/attendify-frontend/discussions)                       |
+| ❓ **Questions**        | [GitHub Discussions](https://github.com/LK-Hour/attendify-frontend/discussions)                       | 24 hours      |
+| 💬 **Chat**             | [Discord Server](https://discord.gg/attendify)                                                        | Real-time     |
 
 ---
 
