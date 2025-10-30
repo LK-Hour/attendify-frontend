@@ -15,8 +15,8 @@ export const AdminDashboard = () => {
   ];
 
   const recentActivities = [
-    { action: 'New student registered', user: 'John Doe', time: '5 mins ago' },
-    { action: 'Attendance session completed', user: 'Prof. Smith', time: '10 mins ago' },
+    { action: 'New student registered', user: 'Rina Longboren', time: '5 mins ago' },
+    { action: 'Attendance session completed', user: 'Prof. Sopheak', time: '10 mins ago' },
     { action: 'New class created', user: 'Admin User', time: '1 hour ago' },
   ];
 
@@ -25,20 +25,18 @@ export const AdminDashboard = () => {
       <div className="space-y-6">
         {/* Header */}
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-            Admin Dashboard
-          </h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-2">
-            System overview and management
-          </p>
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Admin Dashboard</h1>
+          <p className="mt-2 text-gray-600 dark:text-gray-400">System overview and management</p>
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
           {stats.map((stat) => (
             <Card key={stat.label} padding="md" hover>
               <div className="flex items-center gap-4">
-                <div className={`w-12 h-12 rounded-lg ${stat.color} flex items-center justify-center text-2xl`}>
+                <div
+                  className={`h-12 w-12 rounded-lg ${stat.color} flex items-center justify-center text-2xl`}
+                >
                   {stat.icon}
                 </div>
                 <div>
@@ -52,14 +50,12 @@ export const AdminDashboard = () => {
 
         {/* Recent Activity */}
         <Card>
-          <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
-            Recent Activity
-          </h2>
+          <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">Recent Activity</h2>
           <div className="space-y-3">
             {recentActivities.map((activity, index) => (
               <div
                 key={index}
-                className="flex items-center justify-between p-3 rounded-lg bg-gray-50 dark:bg-slate-900"
+                className="flex items-center justify-between rounded-lg bg-gray-50 p-3 dark:bg-slate-900"
               >
                 <div>
                   <p className="font-medium text-gray-900 dark:text-white">{activity.action}</p>
@@ -73,8 +69,8 @@ export const AdminDashboard = () => {
 
         {/* Quick Actions */}
         <Card>
-          <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Quick Actions</h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">Quick Actions</h2>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
             {[
               { label: 'Add Student', icon: '👤', path: '/admin/users' },
               { label: 'Add Lecturer', icon: '👨‍🏫', path: '/admin/users' },
@@ -83,10 +79,10 @@ export const AdminDashboard = () => {
             ].map((action) => (
               <button
                 key={action.label}
-                className="p-4 rounded-lg border-2 border-dashed border-gray-300 dark:border-slate-700 hover:border-primary-500 hover:bg-primary-50 dark:hover:bg-primary-950 transition-colors"
+                className="rounded-lg border-2 border-dashed border-gray-300 p-4 transition-colors hover:border-primary-500 hover:bg-primary-50 dark:border-slate-700 dark:hover:bg-primary-950"
               >
                 <div className="text-center">
-                  <div className="text-3xl mb-2">{action.icon}</div>
+                  <div className="mb-2 text-3xl">{action.icon}</div>
                   <p className="font-medium text-gray-900 dark:text-white">{action.label}</p>
                 </div>
               </button>

@@ -50,29 +50,43 @@ export const Navbar = () => {
 
   const navLinks = getNavigationLinks();
 
+  // Get home path based on user role
+  const getHomePath = () => {
+    if (!user) return '/';
+
+    switch (user.role) {
+      case 'student':
+        return '/student/dashboard';
+      case 'lecturer':
+        return '/lecturer/dashboard';
+      case 'admin':
+        return '/admin/dashboard';
+      default:
+        return '/';
+    }
+  };
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 w-full h-16 min-h-16 bg-white border-b border-gray-200 dark:bg-slate-900 dark:border-slate-800 shadow-sm">
-      <div className="h-full px-4 lg:px-6 flex items-center max-w-full">
-        <div className="flex items-center justify-between w-full gap-4">
+    <nav className="fixed left-0 right-0 top-0 z-50 h-16 min-h-16 w-full border-b border-gray-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
+      <div className="flex h-full max-w-full items-center px-4 lg:px-6">
+        <div className="flex w-full items-center justify-between gap-4">
           {/* Left section */}
-          <div className="flex items-center gap-8 flex-shrink-0">
-            <Link to="/" className="flex items-center gap-2 py-2">
-              <img 
-                src={LogoSvg} 
-                alt="Attendify Logo" 
-                className="w-10 h-10 flex-shrink-0"
-              />
-              <span className="text-xl font-bold text-gray-900 dark:text-white whitespace-nowrap">Attendify</span>
+          <div className="flex flex-shrink-0 items-center gap-8">
+            <Link to={getHomePath()} className="flex items-center gap-2 py-2">
+              <img src={LogoSvg} alt="Attendify Logo" className="h-10 w-10 flex-shrink-0" />
+              <span className="whitespace-nowrap text-xl font-bold text-gray-900 dark:text-white">
+                Attendify
+              </span>
             </Link>
 
             {/* Navigation Links */}
             {user && navLinks.length > 0 && (
-              <div className="hidden lg:flex items-center gap-1">
+              <div className="hidden items-center gap-1 lg:flex">
                 {navLinks.map((link) => (
                   <Link
                     key={link.path}
                     to={link.path}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors whitespace-nowrap ${
+                    className={`whitespace-nowrap rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
                       location.pathname === link.path
                         ? 'bg-primary-100 text-primary-700 dark:bg-primary-900 dark:text-primary-300'
                         : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-slate-800'
@@ -86,12 +100,12 @@ export const Navbar = () => {
           </div>
 
           {/* Right section */}
-          <div className="flex items-center gap-3 flex-shrink-0">
+          <div className="flex flex-shrink-0 items-center gap-3">
             {/* Mobile menu button */}
             {user && navLinks.length > 0 && (
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="lg:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-slate-800"
+                className="rounded-lg p-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-slate-800 lg:hidden"
                 aria-label="Toggle menu"
               >
                 <svg
@@ -105,7 +119,11 @@ export const Navbar = () => {
                   {mobileMenuOpen ? (
                     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                   ) : (
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
                   )}
                 </svg>
               </button>
@@ -115,18 +133,18 @@ export const Navbar = () => {
             <ThemeToggle />
             {user && (
               <>
-                <div className="hidden md:flex items-center gap-3 ml-4 pl-4 border-l border-gray-200 dark:border-slate-700 h-10">
-                  <div className="text-right flex-shrink-0">
-                    <p className="text-sm font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                <div className="ml-4 hidden h-10 items-center gap-3 border-l border-gray-200 pl-4 dark:border-slate-700 md:flex">
+                  <div className="flex-shrink-0 text-right">
+                    <p className="whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">
                       {user.firstName} {user.lastName}
                     </p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400 capitalize whitespace-nowrap">
+                    <p className="whitespace-nowrap text-xs capitalize text-gray-500 dark:text-gray-400">
                       {user.role}
                     </p>
                   </div>
                   <button
                     onClick={handleLogout}
-                    className="p-2 rounded-lg text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-slate-800 transition-colors flex-shrink-0"
+                    className="flex-shrink-0 rounded-lg p-2 text-gray-700 transition-colors hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-slate-800"
                     aria-label="Logout"
                     title="Logout"
                   >
@@ -154,14 +172,14 @@ export const Navbar = () => {
 
       {/* Mobile Navigation Menu */}
       {user && mobileMenuOpen && (
-        <div className="lg:hidden absolute top-16 left-0 right-0 bg-white dark:bg-slate-900 border-b border-gray-200 dark:border-slate-800 shadow-lg">
-          <div className="px-4 py-2 space-y-1">
+        <div className="absolute left-0 right-0 top-16 border-b border-gray-200 bg-white shadow-lg dark:border-slate-800 dark:bg-slate-900 lg:hidden">
+          <div className="space-y-1 px-4 py-2">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`block px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
+                className={`block rounded-lg px-4 py-3 text-sm font-medium transition-colors ${
                   location.pathname === link.path
                     ? 'bg-primary-100 text-primary-700 dark:bg-primary-900 dark:text-primary-300'
                     : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-slate-800'

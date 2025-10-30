@@ -39,7 +39,7 @@ export const Register = () => {
       await new Promise((resolve) => setTimeout(resolve, 1500));
       navigate('/login', { state: { message: 'Registration successful! Please log in.' } });
     } catch (err) {
-      setError('Registration failed. Please try again.');
+      setError('Registration failed. Please try again.' + err);
     } finally {
       setIsLoading(false);
     }
@@ -48,21 +48,17 @@ export const Register = () => {
   return (
     <AuthLayout>
       <Card>
-        <div className="text-center mb-8">
-          <div className="flex items-center justify-center mx-auto mb-4">
-            <img 
-              src={LogoSvg} 
-              alt="Attendify Logo" 
-              className="w-16 h-16"
-            />
+        <div className="mb-8 text-center">
+          <div className="mx-auto mb-4 flex items-center justify-center">
+            <img src={LogoSvg} alt="Attendify Logo" className="h-16 w-16" />
           </div>
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Create Account</h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-2">Register as a student</p>
+          <p className="mt-2 text-gray-600 dark:text-gray-400">Register as a student</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           {error && (
-            <div className="p-4 rounded-lg bg-red-50 dark:bg-red-900 border border-red-200 dark:border-red-800">
+            <div className="rounded-lg border border-red-200 bg-red-50 p-4 dark:border-red-800 dark:bg-red-900">
               <p className="text-sm text-red-800 dark:text-red-200">{error}</p>
             </div>
           )}
@@ -73,7 +69,7 @@ export const Register = () => {
               type="text"
               value={formData.firstName}
               onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-              placeholder="John"
+              placeholder="Your first name"
               required
             />
             <FormField
@@ -81,7 +77,7 @@ export const Register = () => {
               type="text"
               value={formData.lastName}
               onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-              placeholder="Doe"
+              placeholder="Your last name"
               required
             />
           </div>
@@ -91,7 +87,7 @@ export const Register = () => {
             type="email"
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            placeholder="john.doe@student.cadt.edu.kh"
+            placeholder="s.kakada@student.cadt.edu.kh"
             required
           />
 
@@ -115,13 +111,13 @@ export const Register = () => {
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+              <label className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Year <span className="text-red-500">*</span>
               </label>
               <select
                 value={formData.year}
                 onChange={(e) => setFormData({ ...formData, year: Number(e.target.value) })}
-                className="w-full px-4 py-2 text-sm bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-slate-900 dark:text-slate-100 dark:border-slate-700"
+                className="w-full rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
                 required
               >
                 {[1, 2, 3, 4].map((y) => (
@@ -132,13 +128,13 @@ export const Register = () => {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+              <label className="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Semester <span className="text-red-500">*</span>
               </label>
               <select
                 value={formData.semester}
                 onChange={(e) => setFormData({ ...formData, semester: Number(e.target.value) })}
-                className="w-full px-4 py-2 text-sm bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-slate-900 dark:text-slate-100 dark:border-slate-700"
+                className="w-full rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
                 required
               >
                 {[1, 2].map((s) => (
@@ -176,7 +172,10 @@ export const Register = () => {
         <div className="mt-6 text-center">
           <p className="text-sm text-gray-600 dark:text-gray-400">
             Already have an account?{' '}
-            <Link to="/login" className="text-primary-600 hover:text-primary-700 dark:text-primary-400 font-medium">
+            <Link
+              to="/login"
+              className="font-medium text-primary-600 hover:text-primary-700 dark:text-primary-400"
+            >
               Sign in
             </Link>
           </p>

@@ -30,7 +30,7 @@ export const Attendance = () => {
       date: '2025-10-19',
       time: '14:00',
       status: 'present',
-      lecturer: 'Dr. Jane Smith',
+      lecturer: 'Dr. Pov Sopheak',
       room: 'A101',
     },
     {
@@ -40,7 +40,7 @@ export const Attendance = () => {
       date: '2025-10-19',
       time: '10:00',
       status: 'present',
-      lecturer: 'Prof. John Doe',
+      lecturer: 'Prof. Somphors Kakada',
       room: 'B205',
     },
     {
@@ -50,7 +50,7 @@ export const Attendance = () => {
       date: '2025-10-18',
       time: '15:00',
       status: 'absent',
-      lecturer: 'Dr. Sarah Lee',
+      lecturer: 'Dr. Serey Kunthea',
       room: 'C301',
     },
     {
@@ -60,7 +60,7 @@ export const Attendance = () => {
       date: '2025-10-17',
       time: '14:00',
       status: 'late',
-      lecturer: 'Dr. Jane Smith',
+      lecturer: 'Dr. Dara Tevy',
       room: 'A101',
     },
     {
@@ -70,7 +70,7 @@ export const Attendance = () => {
       date: '2025-10-17',
       time: '10:00',
       status: 'present',
-      lecturer: 'Prof. John Doe',
+      lecturer: 'Prof. Prom Seyha',
       room: 'B205',
     },
   ];
@@ -95,19 +95,19 @@ export const Attendance = () => {
         {/* Header */}
         <div>
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Attendance History</h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-2">
+          <p className="mt-2 text-gray-600 dark:text-gray-400">
             View your complete attendance record
           </p>
         </div>
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
           <Card padding="md" hover>
             <div className="text-center">
               <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">
                 {stats.total}
               </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Total Sessions</div>
+              <div className="mt-1 text-sm text-gray-600 dark:text-gray-400">Total Sessions</div>
             </div>
           </Card>
           <Card padding="md" hover>
@@ -115,7 +115,7 @@ export const Attendance = () => {
               <div className="text-3xl font-bold text-green-600 dark:text-green-400">
                 {stats.present}
               </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Present</div>
+              <div className="mt-1 text-sm text-gray-600 dark:text-gray-400">Present</div>
             </div>
           </Card>
           <Card padding="md" hover>
@@ -123,7 +123,7 @@ export const Attendance = () => {
               <div className="text-3xl font-bold text-red-600 dark:text-red-400">
                 {stats.absent}
               </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Absent</div>
+              <div className="mt-1 text-sm text-gray-600 dark:text-gray-400">Absent</div>
             </div>
           </Card>
           <Card padding="md" hover>
@@ -131,50 +131,50 @@ export const Attendance = () => {
               <div className="text-3xl font-bold text-yellow-600 dark:text-yellow-400">
                 {attendanceRate}%
               </div>
-              <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Attendance Rate</div>
+              <div className="mt-1 text-sm text-gray-600 dark:text-gray-400">Attendance Rate</div>
             </div>
           </Card>
         </div>
 
         {/* Filter Tabs */}
         <Card>
-          <div className="flex flex-wrap gap-2 mb-4">
+          <div className="mb-4 flex flex-wrap gap-2">
             <button
               onClick={() => setFilterStatus('all')}
-              className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+              className={`rounded-lg px-4 py-2 font-medium transition-colors ${
                 filterStatus === 'all'
                   ? 'bg-primary-600 text-white'
-                  : 'bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-slate-800 dark:text-gray-300 dark:hover:bg-slate-700'
               }`}
             >
               All ({stats.total})
             </button>
             <button
               onClick={() => setFilterStatus('present')}
-              className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+              className={`rounded-lg px-4 py-2 font-medium transition-colors ${
                 filterStatus === 'present'
                   ? 'bg-green-600 text-white'
-                  : 'bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-slate-800 dark:text-gray-300 dark:hover:bg-slate-700'
               }`}
             >
               Present ({stats.present})
             </button>
             <button
               onClick={() => setFilterStatus('absent')}
-              className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+              className={`rounded-lg px-4 py-2 font-medium transition-colors ${
                 filterStatus === 'absent'
                   ? 'bg-red-600 text-white'
-                  : 'bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-slate-800 dark:text-gray-300 dark:hover:bg-slate-700'
               }`}
             >
               Absent ({stats.absent})
             </button>
             <button
               onClick={() => setFilterStatus('late')}
-              className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+              className={`rounded-lg px-4 py-2 font-medium transition-colors ${
                 filterStatus === 'late'
                   ? 'bg-yellow-600 text-white'
-                  : 'bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-700'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-slate-800 dark:text-gray-300 dark:hover:bg-slate-700'
               }`}
             >
               Late ({stats.late})
@@ -186,22 +186,22 @@ export const Attendance = () => {
             <table className="w-full">
               <thead>
                 <tr className="border-b border-gray-200 dark:border-slate-700">
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900 dark:text-white">
+                  <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900 dark:text-white">
                     Date
                   </th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900 dark:text-white">
+                  <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900 dark:text-white">
                     Class
                   </th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900 dark:text-white">
+                  <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900 dark:text-white">
                     Lecturer
                   </th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900 dark:text-white">
+                  <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900 dark:text-white">
                     Room
                   </th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900 dark:text-white">
+                  <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900 dark:text-white">
                     Time
                   </th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900 dark:text-white">
+                  <th className="px-4 py-3 text-left text-sm font-semibold text-gray-900 dark:text-white">
                     Status
                   </th>
                 </tr>
@@ -210,16 +210,16 @@ export const Attendance = () => {
                 {filteredRecords.map((record) => (
                   <tr
                     key={record.id}
-                    className="border-b border-gray-100 dark:border-slate-800 hover:bg-gray-50 dark:hover:bg-slate-800"
+                    className="border-b border-gray-100 hover:bg-gray-50 dark:border-slate-800 dark:hover:bg-slate-800"
                   >
-                    <td className="py-3 px-4 text-sm text-gray-900 dark:text-gray-300">
+                    <td className="px-4 py-3 text-sm text-gray-900 dark:text-gray-300">
                       {new Date(record.date).toLocaleDateString('en-US', {
                         month: 'short',
                         day: 'numeric',
                         year: 'numeric',
                       })}
                     </td>
-                    <td className="py-3 px-4">
+                    <td className="px-4 py-3">
                       <div className="text-sm font-medium text-gray-900 dark:text-white">
                         {record.className}
                       </div>
@@ -227,23 +227,23 @@ export const Attendance = () => {
                         {record.classCode}
                       </div>
                     </td>
-                    <td className="py-3 px-4 text-sm text-gray-900 dark:text-gray-300">
+                    <td className="px-4 py-3 text-sm text-gray-900 dark:text-gray-300">
                       {record.lecturer}
                     </td>
-                    <td className="py-3 px-4 text-sm text-gray-900 dark:text-gray-300">
+                    <td className="px-4 py-3 text-sm text-gray-900 dark:text-gray-300">
                       {record.room}
                     </td>
-                    <td className="py-3 px-4 text-sm text-gray-900 dark:text-gray-300">
+                    <td className="px-4 py-3 text-sm text-gray-900 dark:text-gray-300">
                       {record.time}
                     </td>
-                    <td className="py-3 px-4">
+                    <td className="px-4 py-3">
                       <Badge
                         variant={
                           record.status === 'present'
                             ? 'success'
                             : record.status === 'absent'
-                            ? 'error'
-                            : 'warning'
+                              ? 'error'
+                              : 'warning'
                         }
                         size="md"
                       >
@@ -257,7 +257,7 @@ export const Attendance = () => {
           </div>
 
           {filteredRecords.length === 0 && (
-            <div className="text-center py-8">
+            <div className="py-8 text-center">
               <p className="text-gray-500 dark:text-gray-400">
                 No {filterStatus !== 'all' ? filterStatus : ''} records found
               </p>

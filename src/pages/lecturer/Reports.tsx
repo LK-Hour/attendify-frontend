@@ -14,16 +14,7 @@ import {
   Filler,
 } from 'chart.js';
 import { Line, Doughnut } from 'react-chartjs-2';
-import {
-  AreaChart,
-  Card as TremorCard,
-  Metric,
-  Text,
-  Flex,
-  BadgeDelta,
-  Grid,
-  Col,
-} from '@tremor/react';
+import { AreaChart, Card as TremorCard, Metric, Text, Flex, BadgeDelta } from '@tremor/react';
 import * as XLSX from 'xlsx';
 
 // Register Chart.js components
@@ -196,21 +187,28 @@ export const Reports = () => {
     <DashboardLayout>
       <div className="space-y-6">
         {/* Modern Header with Gradient */}
-        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800 p-8 text-white">
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800 p-4 text-white sm:p-6 lg:p-8">
           <div className="absolute inset-0 bg-black/20"></div>
-          <div className="relative z-10 flex items-center justify-between">
+          <div className="relative z-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <h1 className="mb-2 text-4xl font-bold">📊 Attendance Analytics</h1>
-              <p className="text-lg text-blue-100">
+              <h1 className="mb-2 text-2xl font-bold sm:text-3xl lg:text-4xl">
+                📊 Attendance Analytics
+              </h1>
+              <p className="text-sm text-blue-100 sm:text-base lg:text-lg">
                 Smart insights and comprehensive reporting dashboard
               </p>
             </div>
-            <div className="flex gap-3">
+            <div className="flex flex-col gap-2 sm:flex-row sm:gap-3">
               <button
                 onClick={handleExport}
-                className="flex items-center gap-2 rounded-xl border border-white/30 bg-white/20 px-6 py-3 font-medium text-white shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-white/30 hover:shadow-xl"
+                className="flex items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/20 px-4 py-2 text-sm font-medium text-white shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-white/30 hover:shadow-xl sm:px-6 sm:py-3 sm:text-base"
               >
-                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg
+                  className="h-4 w-4 sm:h-5 sm:w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -218,10 +216,15 @@ export const Reports = () => {
                     d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                   />
                 </svg>
-                Export Excel
+                <span className="whitespace-nowrap">Export Excel</span>
               </button>
-              <button className="flex items-center gap-2 rounded-xl border border-white/30 bg-white/20 px-6 py-3 font-medium text-white shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-white/30 hover:shadow-xl">
-                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <button className="flex items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/20 px-4 py-2 text-sm font-medium text-white shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-white/30 hover:shadow-xl sm:px-6 sm:py-3 sm:text-base">
+                <svg
+                  className="h-4 w-4 sm:h-5 sm:w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -229,7 +232,7 @@ export const Reports = () => {
                     d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
                   />
                 </svg>
-                Share Report
+                <span className="whitespace-nowrap">Share Report</span>
               </button>
             </div>
           </div>
@@ -286,9 +289,9 @@ export const Reports = () => {
         </div>
 
         {/* Modern Charts Grid */}
-        <Grid numItems={1} numItemsSm={2} numItemsLg={3} className="gap-6">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
           {/* Weekly Performance - Tremor Area Chart */}
-          <Col numColSpan={1} numColSpanLg={2}>
+          <div className="lg:col-span-2">
             <TremorCard className="shadow-xl ring-2 ring-blue-500/10 backdrop-blur-sm">
               <Flex alignItems="center" className="mb-6 space-x-2">
                 <div className="flex items-center space-x-2">
@@ -311,10 +314,10 @@ export const Reports = () => {
                 curveType="monotone"
               />
             </TremorCard>
-          </Col>
+          </div>
 
           {/* Class Performance - Modern Donut */}
-          <Col numColSpan={1}>
+          <div className="lg:col-span-1">
             <TremorCard className="bg-white shadow-xl ring-2 ring-purple-500/10 backdrop-blur-sm dark:bg-slate-900">
               <Flex className="mb-6 space-x-2">
                 <div className="h-3 w-3 rounded-full bg-gradient-to-r from-purple-500 to-pink-500"></div>
@@ -386,61 +389,73 @@ export const Reports = () => {
                   {/* Center Text */}
                   <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
                     <div className="text-center">
-                      <div className="text-3xl font-bold text-gray-900 dark:text-white">89%</div>
-                      <div className="text-sm text-gray-500 dark:text-gray-400">Overall</div>
+                      <div className="text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">
+                        89%
+                      </div>
+                      <div className="text-xs text-gray-500 dark:text-gray-400 sm:text-sm">
+                        Overall
+                      </div>
                     </div>
                   </div>
                 </div>
 
                 {/* Custom Legend */}
-                <div className="mt-4 grid grid-cols-2 gap-2 text-sm">
+                <div className="mt-4 grid grid-cols-1 gap-2 text-xs sm:grid-cols-2 sm:text-sm">
                   <div className="flex items-center space-x-2">
-                    <div className="h-3 w-3 rounded-full bg-blue-500"></div>
-                    <span className="text-gray-700 dark:text-gray-300">Web Development</span>
+                    <div className="h-3 w-3 flex-shrink-0 rounded-full bg-blue-500"></div>
+                    <span className="truncate text-gray-700 dark:text-gray-300">
+                      Web Development
+                    </span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <div className="h-3 w-3 rounded-full bg-violet-500"></div>
-                    <span className="text-gray-700 dark:text-gray-300">Database Systems</span>
+                    <div className="h-3 w-3 flex-shrink-0 rounded-full bg-violet-500"></div>
+                    <span className="truncate text-gray-700 dark:text-gray-300">
+                      Database Systems
+                    </span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <div className="h-3 w-3 rounded-full bg-indigo-500"></div>
-                    <span className="text-gray-700 dark:text-gray-300">Mobile Development</span>
+                    <div className="h-3 w-3 flex-shrink-0 rounded-full bg-indigo-500"></div>
+                    <span className="truncate text-gray-700 dark:text-gray-300">
+                      Mobile Development
+                    </span>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <div className="h-3 w-3 rounded-full bg-rose-500"></div>
-                    <span className="text-gray-700 dark:text-gray-300">AI & Machine Learning</span>
+                    <div className="h-3 w-3 flex-shrink-0 rounded-full bg-rose-500"></div>
+                    <span className="truncate text-gray-700 dark:text-gray-300">
+                      AI & Machine Learning
+                    </span>
                   </div>
                 </div>
               </div>
             </TremorCard>
-          </Col>
-        </Grid>
+          </div>
+        </div>
 
         {/* Monthly Trend - Chart.js with Gradient */}
-        <div className="rounded-2xl bg-gradient-to-br from-slate-50 to-blue-50 p-8 shadow-2xl ring-1 ring-slate-200 dark:from-slate-900 dark:to-blue-950 dark:ring-slate-700">
-          <div className="mb-6 flex items-center justify-between">
+        <div className="rounded-2xl bg-gradient-to-br from-slate-50 to-blue-50 p-4 shadow-2xl ring-1 ring-slate-200 dark:from-slate-900 dark:to-blue-950 dark:ring-slate-700 sm:p-6 lg:p-8">
+          <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center space-x-3">
-              <div className="h-4 w-4 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500"></div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+              <div className="h-4 w-4 flex-shrink-0 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500"></div>
+              <h2 className="text-lg font-bold text-gray-900 dark:text-white sm:text-xl lg:text-2xl">
                 📈 Attendance Trend Analysis
               </h2>
             </div>
-            <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
-              <div className="h-2 w-2 animate-pulse rounded-full bg-green-500"></div>
+            <div className="flex items-center space-x-2 text-xs text-gray-600 dark:text-gray-400 sm:text-sm">
+              <div className="h-2 w-2 flex-shrink-0 animate-pulse rounded-full bg-green-500"></div>
               <span>Live Data</span>
             </div>
           </div>
 
           <div className="relative">
             <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/5 to-purple-500/5"></div>
-            <div className="relative h-96 p-4">
+            <div className="relative h-64 p-2 sm:h-80 sm:p-4 lg:h-96">
               <Line data={chartJsLineData} options={gradientLineOptions} />
             </div>
           </div>
         </div>
 
         {/* Modern KPI Cards */}
-        <Grid numItems={1} numItemsSm={2} numItemsLg={4} className="gap-6">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           <TremorCard className="bg-gradient-to-br from-green-50 to-emerald-100 shadow-xl ring-2 ring-green-200 dark:from-green-950 dark:to-emerald-900 dark:ring-green-800">
             <Flex alignItems="start" className="space-x-4">
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-green-500 shadow-lg">
@@ -554,7 +569,7 @@ export const Reports = () => {
               </div>
             </Flex>
           </TremorCard>
-        </Grid>
+        </div>
 
         {/* Modern Insights Panel */}
         <div className="rounded-2xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 p-1 shadow-2xl">

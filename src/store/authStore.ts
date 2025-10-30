@@ -38,8 +38,8 @@ export const useAuthStore = create<AuthStore>()(
             mockUser = {
               id: '1',
               email: credentials.email,
-              firstName: 'John',
-              lastName: 'Doe',
+              firstName: 'kimhour',
+              lastName: 'loem',
               role: 'student',
               isActive: true,
               createdAt: new Date(),
@@ -58,8 +58,8 @@ export const useAuthStore = create<AuthStore>()(
             mockUser = {
               id: '2',
               email: credentials.email,
-              firstName: 'Jane',
-              lastName: 'Smith',
+              firstName: 'Sopheak',
+              lastName: 'Pov',
               role: 'lecturer',
               isActive: true,
               createdAt: new Date(),

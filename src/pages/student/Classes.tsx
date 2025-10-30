@@ -13,7 +13,7 @@ export const Classes = () => {
       id: '1',
       name: 'Web Development',
       code: 'CS301',
-      lecturer: 'Dr. John Smith',
+      lecturer: 'Dr. Somphors Kakada',
       schedule: 'Mon, Wed 2:00 PM - 4:00 PM',
       room: 'A101',
       attendance: 18,
@@ -24,7 +24,7 @@ export const Classes = () => {
       id: '2',
       name: 'Database Systems',
       code: 'CS302',
-      lecturer: 'Prof. Jane Doe',
+      lecturer: 'Prof. Panha',
       schedule: 'Tue, Thu 10:00 AM - 12:00 PM',
       room: 'B205',
       attendance: 19,
@@ -35,7 +35,7 @@ export const Classes = () => {
       id: '3',
       name: 'Mobile Development',
       code: 'CS303',
-      lecturer: 'Dr. Bob Johnson',
+      lecturer: 'Dr. Dara Tevy',
       schedule: 'Fri 3:00 PM - 6:00 PM',
       room: 'C301',
       attendance: 15,
@@ -51,14 +51,14 @@ export const Classes = () => {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold text-gray-900 dark:text-white">My Classes</h1>
-            <p className="text-gray-600 dark:text-gray-400 mt-2">
+            <p className="mt-2 text-gray-600 dark:text-gray-400">
               You're enrolled in {classes.length} classes this semester
             </p>
           </div>
         </div>
 
         {/* Classes Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           {classes.map((cls) => {
             const attendanceRate = Math.round((cls.attendance / cls.total) * 100);
             return (
@@ -70,7 +70,7 @@ export const Classes = () => {
                       <h3 className="text-xl font-bold text-gray-900 dark:text-white">
                         {cls.name}
                       </h3>
-                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{cls.code}</p>
+                      <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{cls.code}</p>
                     </div>
                     <Badge variant="success" size="md">
                       {cls.status}
@@ -139,13 +139,13 @@ export const Classes = () => {
 
                   {/* Attendance Progress */}
                   <div>
-                    <div className="flex items-center justify-between text-sm mb-2">
+                    <div className="mb-2 flex items-center justify-between text-sm">
                       <span className="text-gray-600 dark:text-gray-400">Attendance</span>
                       <span className="font-semibold text-gray-900 dark:text-white">
                         {cls.attendance}/{cls.total} ({attendanceRate}%)
                       </span>
                     </div>
-                    <div className="w-full bg-gray-200 dark:bg-slate-700 rounded-full h-2">
+                    <div className="h-2 w-full rounded-full bg-gray-200 dark:bg-slate-700">
                       <div
                         className={`h-2 rounded-full ${
                           attendanceRate >= 90
@@ -160,7 +160,7 @@ export const Classes = () => {
                   </div>
 
                   {/* Actions */}
-                  <button className="w-full px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors font-medium">
+                  <button className="w-full rounded-lg bg-primary-600 px-4 py-2 font-medium text-white transition-colors hover:bg-primary-700">
                     View Details
                   </button>
                 </div>

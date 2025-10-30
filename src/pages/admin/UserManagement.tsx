@@ -16,17 +16,17 @@ export const UserManagement = () => {
   const [users, setUsers] = useState<User[]>([
     {
       id: '1',
-      firstName: 'John',
-      lastName: 'Doe',
-      email: 'john@example.com',
+      firstName: 'Kakada',
+      lastName: 'Somphors',
+      email: 's.kakada@example.com',
       role: 'student',
       status: 'active',
     },
     {
       id: '2',
-      firstName: 'Jane',
-      lastName: 'Smith',
-      email: 'jane@example.com',
+      firstName: 'Sopheak',
+      lastName: 'Pov',
+      email: 'p.sopheak@example.com',
       role: 'lecturer',
       status: 'active',
     },
@@ -75,16 +75,14 @@ export const UserManagement = () => {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-              User Management
-            </h1>
-            <p className="text-gray-600 dark:text-gray-400 mt-2">
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-white">User Management</h1>
+            <p className="mt-2 text-gray-600 dark:text-gray-400">
               Manage students, lecturers, and administrators
             </p>
           </div>
           <button
             onClick={() => setShowForm(!showForm)}
-            className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors font-medium"
+            className="rounded-lg bg-primary-600 px-4 py-2 font-medium text-white transition-colors hover:bg-primary-700"
           >
             + Add User
           </button>
@@ -93,48 +91,48 @@ export const UserManagement = () => {
         {/* Form */}
         {showForm && (
           <Card>
-            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">New User</h2>
+            <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">New User</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
                     First Name
                   </label>
                   <input
                     type="text"
                     value={formData.firstName}
                     onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-primary-500 dark:bg-slate-800 dark:text-white"
+                    className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-primary-500 dark:border-slate-600 dark:bg-slate-800 dark:text-white"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
                     Last Name
                   </label>
                   <input
                     type="text"
                     value={formData.lastName}
                     onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-primary-500 dark:bg-slate-800 dark:text-white"
+                    className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-primary-500 dark:border-slate-600 dark:bg-slate-800 dark:text-white"
                     required
                   />
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
                   Email
                 </label>
                 <input
                   type="email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-primary-500 dark:bg-slate-800 dark:text-white"
+                  className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-primary-500 dark:border-slate-600 dark:bg-slate-800 dark:text-white"
                   required
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
                   Role
                 </label>
                 <select
@@ -145,7 +143,7 @@ export const UserManagement = () => {
                       role: e.target.value as 'student' | 'lecturer' | 'admin',
                     })
                   }
-                  className="w-full px-3 py-2 border border-gray-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-primary-500 dark:bg-slate-800 dark:text-white"
+                  className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:ring-2 focus:ring-primary-500 dark:border-slate-600 dark:bg-slate-800 dark:text-white"
                 >
                   <option value="student">Student</option>
                   <option value="lecturer">Lecturer</option>
@@ -155,14 +153,14 @@ export const UserManagement = () => {
               <div className="flex gap-2">
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors font-medium"
+                  className="rounded-lg bg-primary-600 px-4 py-2 font-medium text-white transition-colors hover:bg-primary-700"
                 >
                   Create
                 </button>
                 <button
                   type="button"
                   onClick={() => setShowForm(false)}
-                  className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 dark:bg-slate-700 dark:text-gray-300 dark:hover:bg-slate-600 transition-colors font-medium"
+                  className="rounded-lg bg-gray-200 px-4 py-2 font-medium text-gray-700 transition-colors hover:bg-gray-300 dark:bg-slate-700 dark:text-gray-300 dark:hover:bg-slate-600"
                 >
                   Cancel
                 </button>
@@ -177,19 +175,19 @@ export const UserManagement = () => {
             <table className="w-full">
               <thead>
                 <tr className="border-b border-gray-200 dark:border-slate-700">
-                  <th className="text-left py-3 px-4 font-semibold text-gray-900 dark:text-white">
+                  <th className="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">
                     Name
                   </th>
-                  <th className="text-left py-3 px-4 font-semibold text-gray-900 dark:text-white">
+                  <th className="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">
                     Email
                   </th>
-                  <th className="text-left py-3 px-4 font-semibold text-gray-900 dark:text-white">
+                  <th className="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">
                     Role
                   </th>
-                  <th className="text-left py-3 px-4 font-semibold text-gray-900 dark:text-white">
+                  <th className="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">
                     Status
                   </th>
-                  <th className="text-left py-3 px-4 font-semibold text-gray-900 dark:text-white">
+                  <th className="px-4 py-3 text-left font-semibold text-gray-900 dark:text-white">
                     Actions
                   </th>
                 </tr>
@@ -198,22 +196,22 @@ export const UserManagement = () => {
                 {users.map((user) => (
                   <tr
                     key={user.id}
-                    className="border-b border-gray-200 dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-900"
+                    className="border-b border-gray-200 hover:bg-gray-50 dark:border-slate-700 dark:hover:bg-slate-900"
                   >
-                    <td className="py-3 px-4 text-gray-900 dark:text-white">
+                    <td className="px-4 py-3 text-gray-900 dark:text-white">
                       {user.firstName} {user.lastName}
                     </td>
-                    <td className="py-3 px-4 text-gray-600 dark:text-gray-400">{user.email}</td>
-                    <td className="py-3 px-4">{getRoleBadge(user.role)}</td>
-                    <td className="py-3 px-4">
+                    <td className="px-4 py-3 text-gray-600 dark:text-gray-400">{user.email}</td>
+                    <td className="px-4 py-3">{getRoleBadge(user.role)}</td>
+                    <td className="px-4 py-3">
                       <Badge variant={user.status === 'active' ? 'success' : 'default'}>
                         {user.status}
                       </Badge>
                     </td>
-                    <td className="py-3 px-4">
+                    <td className="px-4 py-3">
                       <button
                         onClick={() => handleDelete(user.id)}
-                        className="text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300 font-medium text-sm"
+                        className="text-sm font-medium text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300"
                       >
                         Delete
                       </button>
