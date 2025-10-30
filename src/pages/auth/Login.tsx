@@ -23,16 +23,16 @@ export const Login = () => {
 
     try {
       await login({ email, password, role });
-      
+
       // Redirect based on role
       const dashboardRoutes = {
         student: '/student/dashboard',
         lecturer: '/lecturer/dashboard',
         admin: '/admin/dashboard',
       };
-      
+
       navigate(dashboardRoutes[role], { replace: true });
-    } catch (err) {
+    } catch {
       setError('Invalid credentials. Please try again.');
     }
   };
@@ -40,27 +40,27 @@ export const Login = () => {
   return (
     <AuthLayout>
       <Card>
-        <div className="text-center mb-8">
-          <div className="flex items-center justify-center mx-auto mb-4">
-            <img 
-              src={LogoSvg} 
-              alt="Attendify Logo" 
-              className="w-16 h-16"
-            />
+        <div className="mb-6 text-center sm:mb-8">
+          <div className="mx-auto mb-3 flex items-center justify-center sm:mb-4">
+            <img src={LogoSvg} alt="Attendify Logo" className="h-12 w-12 sm:h-16 sm:w-16" />
           </div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Welcome to Attendify</h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-2">Sign in to your account</p>
+          <h1 className="text-xl font-bold text-gray-900 dark:text-white sm:text-2xl">
+            Welcome to Attendify
+          </h1>
+          <p className="mt-1 text-sm text-gray-600 dark:text-gray-400 sm:mt-2 sm:text-base">
+            Sign in to your account
+          </p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           {error && (
-            <div className="p-4 rounded-lg bg-red-50 dark:bg-red-900 border border-red-200 dark:border-red-800">
-              <p className="text-sm text-red-800 dark:text-red-200">{error}</p>
+            <div className="rounded-lg border border-red-200 bg-red-50 p-3 dark:border-red-800 dark:bg-red-900 sm:p-4">
+              <p className="text-xs text-red-800 dark:text-red-200 sm:text-sm">{error}</p>
             </div>
           )}
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label className="mb-2 block text-xs font-medium text-gray-700 dark:text-gray-300 sm:text-sm">
               Role
             </label>
             <div className="grid grid-cols-3 gap-2">
@@ -69,7 +69,7 @@ export const Login = () => {
                   key={r}
                   type="button"
                   onClick={() => setRole(r)}
-                  className={`px-4 py-2 rounded-lg font-medium capitalize transition-colors ${
+                  className={`rounded-lg px-2 py-2 text-xs font-medium capitalize transition-colors sm:px-4 sm:text-base ${
                     role === r
                       ? 'bg-primary-600 text-white'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-slate-800 dark:text-gray-300 dark:hover:bg-slate-700'
@@ -99,17 +99,19 @@ export const Login = () => {
             required
           />
 
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-0">
             <label className="flex items-center gap-2">
               <input
                 type="checkbox"
-                className="w-4 h-4 rounded border-gray-300 text-primary-600 focus:ring-primary-500"
+                className="h-4 w-4 rounded border-gray-300 text-primary-600 focus:ring-primary-500"
               />
-              <span className="text-sm text-gray-600 dark:text-gray-400">Remember me</span>
+              <span className="text-xs text-gray-600 dark:text-gray-400 sm:text-sm">
+                Remember me
+              </span>
             </label>
             <Link
               to="/forgot-password"
-              className="text-sm text-primary-600 hover:text-primary-700 dark:text-primary-400"
+              className="text-xs text-primary-600 hover:text-primary-700 dark:text-primary-400 sm:text-sm"
             >
               Forgot password?
             </Link>
@@ -120,10 +122,13 @@ export const Login = () => {
           </Button>
         </form>
 
-        <div className="mt-6 text-center">
-          <p className="text-sm text-gray-600 dark:text-gray-400">
+        <div className="mt-4 text-center sm:mt-6">
+          <p className="text-xs text-gray-600 dark:text-gray-400 sm:text-sm">
             Don't have an account?{' '}
-            <Link to="/register" className="text-primary-600 hover:text-primary-700 dark:text-primary-400 font-medium">
+            <Link
+              to="/register"
+              className="font-medium text-primary-600 hover:text-primary-700 dark:text-primary-400"
+            >
               Sign up
             </Link>
           </p>

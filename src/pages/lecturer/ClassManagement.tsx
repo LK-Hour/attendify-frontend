@@ -100,16 +100,18 @@ export const ClassManagement = () => {
         )}
 
         {/* Header with Create Class Button */}
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Class Management</h1>
-            <p className="mt-2 text-gray-600 dark:text-gray-400">
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">
+              Class Management
+            </h1>
+            <p className="mt-1 text-sm text-gray-600 dark:text-gray-400 sm:mt-2 sm:text-base">
               Create and manage your classes, set attendance limits, and manage enrolled students
             </p>
           </div>
           <button
             onClick={() => setShowCreateModal(true)}
-            className="rounded-lg bg-primary-600 px-4 py-2 text-white transition-colors hover:bg-primary-700"
+            className="whitespace-nowrap rounded-lg bg-primary-600 px-4 py-2 text-sm text-white transition-colors hover:bg-primary-700 sm:text-base"
           >
             Create New Class
           </button>
@@ -119,34 +121,38 @@ export const ClassManagement = () => {
         <div className="grid gap-6">
           {classes.map((cls) => (
             <Card key={cls.id}>
-              <div className="flex items-start justify-between">
-                <div>
-                  <div className="mb-2 flex items-center gap-3">
-                    <h2 className="text-xl font-bold text-gray-900 dark:text-white">{cls.name}</h2>
-                    <Badge variant="default">{cls.code}</Badge>
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                <div className="min-w-0 flex-1">
+                  <div className="mb-2 flex flex-wrap items-center gap-2 sm:gap-3">
+                    <h2 className="text-lg font-bold text-gray-900 dark:text-white sm:text-xl">
+                      {cls.name}
+                    </h2>
+                    <Badge variant="default" size="sm">
+                      {cls.code}
+                    </Badge>
                   </div>
-                  <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                  <div className="space-y-2 text-xs text-gray-600 dark:text-gray-400 sm:text-sm">
                     <p>📅 {cls.schedule}</p>
                     <p>📍 Room {cls.room}</p>
                     <p>👥 {cls.enrolledStudents} students enrolled</p>
-                    <div className="flex gap-4">
+                    <div className="flex flex-col gap-2 sm:flex-row sm:gap-4">
                       <p>⚠️ Absence Limit: {cls.absenceLimit}</p>
                       <p>⏰ Late Limit: {cls.lateLimit}</p>
                     </div>
                   </div>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex flex-col gap-2 sm:flex-row">
                   {!activeSession ? (
                     <button
                       onClick={() => startSession(cls.id)}
-                      className="rounded bg-green-100 px-3 py-1 text-green-700 transition-colors hover:bg-green-200 dark:bg-green-900 dark:text-green-100"
+                      className="rounded bg-green-100 px-3 py-1 text-xs text-green-700 transition-colors hover:bg-green-200 dark:bg-green-900 dark:text-green-100 sm:text-sm"
                     >
                       Start Session
                     </button>
                   ) : (
                     <button
                       disabled
-                      className="rounded bg-gray-100 px-3 py-1 text-gray-400 dark:bg-gray-800"
+                      className="rounded bg-gray-100 px-3 py-1 text-xs text-gray-400 dark:bg-gray-800 sm:text-sm"
                     >
                       Session Active
                     </button>

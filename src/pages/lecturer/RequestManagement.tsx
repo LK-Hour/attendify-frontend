@@ -78,10 +78,12 @@ export const RequestManagement = () => {
     <DashboardLayout>
       <div className="space-y-6">
         {/* Header */}
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Request Management</h1>
-            <p className="mt-2 text-gray-600 dark:text-gray-400">
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">
+              Request Management
+            </h1>
+            <p className="mt-1 text-sm text-gray-600 dark:text-gray-400 sm:mt-2 sm:text-base">
               Review and manage student attendance requests
             </p>
           </div>
@@ -101,7 +103,7 @@ export const RequestManagement = () => {
               <button
                 key={filter}
                 onClick={() => setSelectedFilter(filter)}
-                className={`rounded-lg px-4 py-2 font-medium capitalize transition-colors ${
+                className={`rounded-lg px-3 py-2 text-xs font-medium capitalize transition-colors sm:px-4 sm:text-sm ${
                   selectedFilter === filter
                     ? 'bg-primary-600 text-white'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-slate-800 dark:text-gray-300 dark:hover:bg-slate-700'
@@ -122,8 +124,8 @@ export const RequestManagement = () => {
           {filteredRequests.length === 0 ? (
             <Card>
               <div className="py-8 text-center">
-                <div className="mb-4 text-6xl">📝</div>
-                <h3 className="mb-2 text-lg font-medium text-gray-900 dark:text-white">
+                <div className="mb-4 text-4xl sm:text-6xl">📝</div>
+                <h3 className="mb-2 text-base font-medium text-gray-900 dark:text-white sm:text-lg">
                   No {selectedFilter !== 'all' ? selectedFilter : ''} requests found
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400">

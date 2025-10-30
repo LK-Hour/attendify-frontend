@@ -188,6 +188,36 @@ export const Navbar = () => {
                 {link.name}
               </Link>
             ))}
+
+            {/* Mobile User Info & Logout */}
+            <div className="mt-3 border-t border-gray-200 pt-3 dark:border-slate-700">
+              <div className="mb-2 px-4 py-2">
+                <p className="text-sm font-medium text-gray-900 dark:text-white">
+                  {user.firstName} {user.lastName}
+                </p>
+                <p className="text-xs capitalize text-gray-500 dark:text-gray-400">{user.role}</p>
+              </div>
+              <button
+                onClick={handleLogout}
+                className="flex w-full items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium text-red-600 transition-colors hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-950"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                  />
+                </svg>
+                Logout
+              </button>
+            </div>
           </div>
         </div>
       )}
