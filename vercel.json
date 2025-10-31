@@ -1,9 +1,8 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }],
   "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "framework": null,
   "outputDirectory": "dist",
-  "framework": "vite",
-  "github": {
-    "silent": true
-  }
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
