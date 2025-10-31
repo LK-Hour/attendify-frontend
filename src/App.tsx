@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { AppRoutes } from './routes';
 import { useUIStore } from './store';
-import { GoogleAnalytics } from './components/analytics/GoogleAnalytics';
 import './i18n'; // Initialize i18next
 import './App.css';
 
@@ -38,12 +37,7 @@ function App() {
     return () => mediaQuery.removeEventListener('change', handleChange);
   }, [setTheme, theme]);
 
-  return (
-    <>
-      <GoogleAnalytics />
-      <AppRoutes />
-    </>
-  );
+  return <AppRoutes />;
 }
 
 export default App;
